@@ -30,9 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create dir
-        run: mkdir ${{ GITHUB_WORKSPACE }}/build
+        run: mkdir ${{ env.GITHUB_WORKSPACE }}/build
       - name: Create file
-        run: echo "HELLO FROM INDEX.HTML" > ${{ GITHUB_WORKSPACE }}/build/index.html
+        run: echo "HELLO FROM INDEX.HTML" > ${{ env.GITHUB_WORKSPACE }}/build/index.html
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '${{ GITHUB_WORKSPACE }}/build'
+          path: '${{ env.GITHUB_WORKSPACE }}/build'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
