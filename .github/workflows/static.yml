@@ -29,6 +29,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Create dir and files
+        run: mkdir ./build && echo "HELLO FROM INDEX.HTML" > ./build/index.html
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
@@ -37,7 +39,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
+          path: './build'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
